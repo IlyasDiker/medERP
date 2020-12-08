@@ -191,15 +191,15 @@ public class clients extends javax.swing.JInternalFrame {
 
     private void edituserbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edituserbtnActionPerformed
         
-        try {
             // System.out.println(id);
             int row = UsersTable.getSelectedRow();
             int id = Integer.parseInt((String) UsersTable.getValueAt(row, 0));
+        try {
             mainapp.openformclient(false, id);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Please select a client first");
             Logger.getLogger(clients.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_edituserbtnActionPerformed
 
     private void adduserbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adduserbtnActionPerformed
@@ -217,7 +217,7 @@ public class clients extends javax.swing.JInternalFrame {
     private void deletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebtnActionPerformed
         int row = UsersTable.getSelectedRow();
         int id = Integer.parseInt((String) UsersTable.getValueAt(row, 0));
-        String fullName = ((String) UsersTable.getValueAt(row, 2))+" "+((String) UsersTable.getValueAt(row, 3));
+        String fullName = ((String) UsersTable.getValueAt(row, 1))+" "+((String) UsersTable.getValueAt(row, 2));
         // System.out.println(id);
         int selectedOption = JOptionPane.showConfirmDialog(null, 
                 "Are you shure you want to delete client :"+fullName+" ?", 

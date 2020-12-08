@@ -57,7 +57,6 @@ public class mainapp extends javax.swing.JFrame {
         
         // add Internal frames
         
-        
     }
     
     // GENERATED CODE HERE
@@ -76,12 +75,13 @@ public class mainapp extends javax.swing.JFrame {
         gestionClients = new javax.swing.JMenu();
         addclient = new javax.swing.JMenuItem();
         manageclients = new javax.swing.JMenuItem();
-        gestionCabinet = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        gestionCabinet = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         Administration = new javax.swing.JMenu();
         newemployee = new javax.swing.JMenuItem();
         manageemployee = new javax.swing.JMenuItem();
@@ -151,23 +151,23 @@ public class mainapp extends javax.swing.JFrame {
         });
         gestionClients.add(manageclients);
 
-        jMenuBar1.add(gestionClients);
-
-        gestionCabinet.setText("Gestion Cabinet");
-        gestionCabinet.setEnabled(false);
-
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-waiting_room_s.png"))); // NOI18N
         jMenuItem5.setText("Waiting Room");
-        gestionCabinet.add(jMenuItem5);
+        gestionClients.add(jMenuItem5);
 
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-calendar.png"))); // NOI18N
         jMenuItem6.setText("Appointments");
         jMenuItem6.setToolTipText("");
-        gestionCabinet.add(jMenuItem6);
+        gestionClients.add(jMenuItem6);
 
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-paper_money.png"))); // NOI18N
         jMenuItem4.setText("Facturation");
-        gestionCabinet.add(jMenuItem4);
+        gestionClients.add(jMenuItem4);
+
+        jMenuBar1.add(gestionClients);
+
+        gestionCabinet.setText("Gestion Cabinet");
+        gestionCabinet.setEnabled(false);
 
         jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-tips.png"))); // NOI18N
         jMenuItem7.setText("Insurances");
@@ -176,6 +176,10 @@ public class mainapp extends javax.swing.JFrame {
         jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-pills_s.png"))); // NOI18N
         jMenuItem8.setText("Medicines");
         gestionCabinet.add(jMenuItem8);
+
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-treatment.png"))); // NOI18N
+        jMenuItem1.setText("Medical Reports");
+        gestionCabinet.add(jMenuItem1);
 
         jMenuBar1.add(gestionCabinet);
 
@@ -250,7 +254,7 @@ public class mainapp extends javax.swing.JFrame {
                 gestionClients.setEnabled(false);
             } else if (role.equals("Secretaire")) {
                 Administration.setEnabled(false);
-                gestionCabinet.setEnabled(true);
+                gestionCabinet.setEnabled(false);
                 gestionClients.setEnabled(true);
             } else if (role.equals("Medecin")) {
                 Administration.setEnabled(false);
@@ -342,6 +346,7 @@ public class mainapp extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;

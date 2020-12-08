@@ -25,7 +25,7 @@ public class clientform extends javax.swing.JInternalFrame {
     int userTarget;
     String TABLE_NAME = "clients";
     /**
-     * Creates new form newuser
+     * Creates new form newclient
      */
     public clientform() {
         initComponents();
@@ -36,19 +36,18 @@ public class clientform extends javax.swing.JInternalFrame {
         isNewUser = false;
         userTarget = target;
         
-        title.setText("Update User");
-        adduserbtn.setText("Update User");
-        passfield.setEnabled(false);
-        jLabel5.setEnabled(false);
+        title.setText("Update Client");
+        adduserbtn.setText("Update Client");
+        
         
         RSG = CNX.Select_request("SELECT * FROM "+TABLE_NAME+" WHERE id = "+target);
         if(RSG.next()) {
-            usernamefield.setText(RSG.getString("username"));
+            usercinfield.setText(RSG.getString("cin"));
             nomfield.setText(RSG.getString("nom"));
             prenomfield.setText(RSG.getString("prenom"));
-            passfield.setText(RSG.getString("password"));
-            rolecombo.setSelectedItem(RSG.getString("role"));
-            specialitycombo.setSelectedItem(RSG.getString("specialite"));
+            sexcombo.setSelectedItem(RSG.getString("sex"));
+            emailfield.setText(RSG.getString("email"));
+            phonefield.setText(RSG.getString("phone"));
         }
         
     }
@@ -65,19 +64,19 @@ public class clientform extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        usernamefield = new javax.swing.JTextField();
+        usercinfield = new javax.swing.JTextField();
         nomfield = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         prenomfield = new javax.swing.JTextField();
         Prenom = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        passfield = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
-        specialitycombo = new javax.swing.JComboBox<>();
-        rolecombo = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
+        sexcombo = new javax.swing.JComboBox<>();
         errorfield = new javax.swing.JLabel();
         adduserbtn = new javax.swing.JButton();
+        emailfield = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        phonefield = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -97,7 +96,7 @@ public class clientform extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(title)
-                .addContainerGap(313, Short.MAX_VALUE))
+                .addContainerGap(308, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +106,7 @@ public class clientform extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20))
         );
 
-        jLabel1.setText("Username");
+        jLabel1.setText("CIN");
 
         jLabel3.setText("Nom");
 
@@ -115,29 +114,29 @@ public class clientform extends javax.swing.JInternalFrame {
 
         Prenom.setText("Prenom");
 
-        jLabel5.setText("Password");
+        jLabel5.setText("Email");
 
-        jLabel4.setText("Role");
+        jLabel4.setText("Sex");
 
-        specialitycombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Generaliste", "Gastrologie", "Gynecologie", "Cardiologie", "Chirurgien" }));
-
-        rolecombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medecin", "Infirmier", "Secretaire", "Administrateur" }));
-        rolecombo.addItemListener(new java.awt.event.ItemListener() {
+        sexcombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Not specified" }));
+        sexcombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                rolecomboItemStateChanged(evt);
+                sexcomboItemStateChanged(evt);
             }
         });
 
-        jLabel6.setText("Specialite");
-
         errorfield.setForeground(new java.awt.Color(204, 0, 0));
 
-        adduserbtn.setText(" Add new User");
+        adduserbtn.setText(" Add new Client");
         adduserbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 adduserbtnActionPerformed(evt);
             }
         });
+
+        emailfield.setToolTipText("");
+
+        jLabel6.setText("Phone");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -153,17 +152,17 @@ public class clientform extends javax.swing.JInternalFrame {
                     .addComponent(Prenom)
                     .addComponent(nomfield, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                     .addComponent(jLabel3)
-                    .addComponent(usernamefield)
+                    .addComponent(usercinfield)
                     .addComponent(jLabel1)
-                    .addComponent(passfield))
+                    .addComponent(emailfield, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4)
-                    .addComponent(specialitycombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(rolecombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(sexcombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(adduserbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                     .addComponent(jLabel6)
-                    .addComponent(adduserbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(phonefield))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,16 +174,16 @@ public class clientform extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(usernamefield, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rolecombo, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                    .addComponent(usercinfield, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sexcombo, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nomfield, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(specialitycombo, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(phonefield)
+                    .addComponent(nomfield, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Prenom)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -192,70 +191,55 @@ public class clientform extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(adduserbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(passfield))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(adduserbtn)
+                    .addComponent(emailfield, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(errorfield, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 19, Short.MAX_VALUE))
+                .addGap(0, 15, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rolecomboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rolecomboItemStateChanged
+    private void sexcomboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_sexcomboItemStateChanged
         //Polyvalent, Sage-femme, Technicien, Radio, Aide-soignant, Dermatologie, Neurologie
         //Medecin, Infirmier, Secretaire, Administrateur
-        if (rolecombo.getSelectedItem().equals("Medecin")){
-            specialitycombo.setEnabled(true);
-            specialitycombo.removeAllItems();
-            String[] spmedecin = {"Generaliste", "Gastrologie", "Gynecologie", "Cardiologie", "Chirurgien"};
-            specialitycombo.setModel(new DefaultComboBoxModel<String>(spmedecin));
-        } else if(rolecombo.getSelectedItem().equals("Infirmier")) {
-            specialitycombo.setEnabled(true);
-            specialitycombo.removeAllItems();
-            String[] spinfirmier = {"Polyvalent", "Sage-femme", "Technicien", "Radio", "Aide-soignant", "Dermatologie", "Neurologie"};
-            specialitycombo.setModel(new DefaultComboBoxModel<String>(spinfirmier));
-        } else {
-            specialitycombo.removeAllItems();
-            specialitycombo.addItem("employee");
-            specialitycombo.setEnabled(false);
-            
-        }
-    }//GEN-LAST:event_rolecomboItemStateChanged
+        
+    }//GEN-LAST:event_sexcomboItemStateChanged
 
     private void adduserbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adduserbtnActionPerformed
-        String Username = usernamefield.getText().trim();
+        String CIN = usercinfield.getText().trim();
         String Nom = nomfield.getText().trim();
         String Prenom = prenomfield.getText().trim();
-        String Password = passfield.getText().toString().trim();
-        String Role = rolecombo.getSelectedItem().toString();
-        String Speciality = specialitycombo.getSelectedItem().toString();
+        String Email = emailfield.getText().toString().trim();
+        String Sex = sexcombo.getSelectedItem().toString();
+        String Phone = phonefield.getText().toString().trim();
             
 
-        if (Username.isEmpty() || Nom.isEmpty() || Prenom.isEmpty() || Password.isEmpty()){
+        if (CIN.isEmpty() || Nom.isEmpty() || Prenom.isEmpty() || Email.isEmpty() || Phone.isEmpty()){
             errorfield.setText("Please fill all the Fields");
         } else {        
             if (isNewUser){
-                String Query = "INSERT INTO "+TABLE_NAME+"(username, nom, prenom, password, role, specialite) "
-                        + "VALUES ('"+Username+"', '"+Nom+"', '"+Prenom+"', '"+Password+"', '"+Role+"', '"+Speciality+"')";
+                String Query = "INSERT INTO "+TABLE_NAME+"(nom, prenom, cin, phone, email, sex) "
+                        + "VALUES ('"+Nom+"', '"+Prenom+"', '"+CIN+"', '"+Phone+"', '"+Email+"', '"+Sex+"')";
                 boolean isDone = CNX.AMS_request(Query);
                 if (isDone){
-                    JOptionPane.showMessageDialog(null, "User Created Successfully");
+                    JOptionPane.showMessageDialog(null, "Client Created Successfully");
                     this.dispose();
                 } else {
-                    errorfield.setText("Can't add new user to database");
+                    errorfield.setText("Can't add new Client to database");
 
                 }
             } else {
-                String Query = "UPDATE "+TABLE_NAME+" SET username = '"+Username+"', nom = '"+Nom+"', prenom = '"+Prenom+"', role = '"+Role+"', specialite = '"+Speciality+"'"
+                String Query = "UPDATE "+TABLE_NAME+" SET nom = '"+Nom+"', prenom = '"+Prenom+"', cin = '"+CIN+"', phone = '"+Phone+"', sex = '"+Sex+"', email ='"+Email+"'"
                         + " WHERE id = "+userTarget;
                 boolean isDone = CNX.AMS_request(Query);
                 if (isDone){
-                    JOptionPane.showMessageDialog(null, "User Updated Successfully");
+                    JOptionPane.showMessageDialog(null, "Client Updated Successfully");
                     this.dispose();
                 } else {
-                    errorfield.setText("Can't update user in database");
+                    errorfield.setText("Can't update Client in database");
 
                 }
             }
@@ -266,6 +250,7 @@ public class clientform extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Prenom;
     private javax.swing.JButton adduserbtn;
+    private javax.swing.JTextField emailfield;
     private javax.swing.JLabel errorfield;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -274,11 +259,10 @@ public class clientform extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nomfield;
-    private javax.swing.JPasswordField passfield;
+    private javax.swing.JTextField phonefield;
     private javax.swing.JTextField prenomfield;
-    private javax.swing.JComboBox<String> rolecombo;
-    private javax.swing.JComboBox<String> specialitycombo;
+    private javax.swing.JComboBox<String> sexcombo;
     private javax.swing.JLabel title;
-    private javax.swing.JTextField usernamefield;
+    private javax.swing.JTextField usercinfield;
     // End of variables declaration//GEN-END:variables
 }
