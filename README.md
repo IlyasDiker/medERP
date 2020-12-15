@@ -27,6 +27,13 @@ usign a `maria-db` database i created thoes tables
 | INT `AUTOINCREMENT` | Varchar`100` |
 | identifier          | Company Name |
 
+#### Medicines
+
+| id                  | Nom           |
+| ------------------- | ------------- |
+| INT `AUTOINCREMENT` | Varchar`100`  |
+| identifier          | Medicine Name |
+
 ### User Interfaces
 
 #### Login
