@@ -79,7 +79,7 @@ public class mainapp extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         gestionCabinet = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        assurance = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         Administration = new javax.swing.JMenu();
@@ -169,9 +169,14 @@ public class mainapp extends javax.swing.JFrame {
         gestionCabinet.setText("Gestion Cabinet");
         gestionCabinet.setEnabled(false);
 
-        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-tips.png"))); // NOI18N
-        jMenuItem7.setText("Insurances");
-        gestionCabinet.add(jMenuItem7);
+        assurance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-tips.png"))); // NOI18N
+        assurance.setText("Insurances");
+        assurance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assuranceActionPerformed(evt);
+            }
+        });
+        gestionCabinet.add(assurance);
 
         jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-pills_s.png"))); // NOI18N
         jMenuItem8.setText("Medicines");
@@ -298,6 +303,12 @@ public class mainapp extends javax.swing.JFrame {
         clientsframe.setVisible(true);
     }//GEN-LAST:event_manageclientsActionPerformed
 
+    private void assuranceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assuranceActionPerformed
+        JInternalFrame assuranceframe = new insurance();
+        jDesktopPane1.add(assuranceframe);
+        assuranceframe.setVisible(true);
+    }//GEN-LAST:event_assuranceActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -340,6 +351,7 @@ public class mainapp extends javax.swing.JFrame {
     private javax.swing.JMenuItem Settings;
     private javax.swing.JMenuItem accountsettings;
     private javax.swing.JMenuItem addclient;
+    private javax.swing.JMenuItem assurance;
     private javax.swing.JMenu gestionCabinet;
     private javax.swing.JMenu gestionClients;
     public static javax.swing.JDesktopPane jDesktopPane1;
@@ -350,7 +362,6 @@ public class mainapp extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JMenuItem manageclients;

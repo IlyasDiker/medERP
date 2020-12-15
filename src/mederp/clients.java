@@ -192,8 +192,8 @@ public class clients extends javax.swing.JInternalFrame {
     private void edituserbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edituserbtnActionPerformed
         
             // System.out.println(id);
-            int row = UsersTable.getSelectedRow();
-            int id = Integer.parseInt((String) UsersTable.getValueAt(row, 0));
+        int row = UsersTable.getSelectedRow();
+        int id = Integer.parseInt((String) UsersTable.getValueAt(row, 0));
         try {
             mainapp.openformclient(false, id);
         } catch (SQLException ex) {
