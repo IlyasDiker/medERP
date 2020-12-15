@@ -76,7 +76,7 @@ public class mainapp extends javax.swing.JFrame {
         addclient = new javax.swing.JMenuItem();
         manageclients = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        appoinements = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         gestionCabinet = new javax.swing.JMenu();
         assurance = new javax.swing.JMenuItem();
@@ -155,10 +155,15 @@ public class mainapp extends javax.swing.JFrame {
         jMenuItem5.setText("Waiting Room");
         gestionClients.add(jMenuItem5);
 
-        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-calendar.png"))); // NOI18N
-        jMenuItem6.setText("Appointments");
-        jMenuItem6.setToolTipText("");
-        gestionClients.add(jMenuItem6);
+        appoinements.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-calendar.png"))); // NOI18N
+        appoinements.setText("Appointments");
+        appoinements.setToolTipText("");
+        appoinements.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                appoinementsActionPerformed(evt);
+            }
+        });
+        gestionClients.add(appoinements);
 
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-paper_money.png"))); // NOI18N
         jMenuItem4.setText("Facturation");
@@ -320,6 +325,12 @@ public class mainapp extends javax.swing.JFrame {
         medframe.setVisible(true);
     }//GEN-LAST:event_medicinesActionPerformed
 
+    private void appoinementsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appoinementsActionPerformed
+        JInternalFrame apframe = new appoinement();
+        jDesktopPane1.add(apframe);
+        apframe.setVisible(true);
+    }//GEN-LAST:event_appoinementsActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -362,6 +373,7 @@ public class mainapp extends javax.swing.JFrame {
     private javax.swing.JMenuItem Settings;
     private javax.swing.JMenuItem accountsettings;
     private javax.swing.JMenuItem addclient;
+    private javax.swing.JMenuItem appoinements;
     private javax.swing.JMenuItem assurance;
     private javax.swing.JMenu gestionCabinet;
     private javax.swing.JMenu gestionClients;
@@ -372,7 +384,6 @@ public class mainapp extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JMenuItem manageclients;
     private javax.swing.JMenuItem manageemployee;
