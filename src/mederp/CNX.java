@@ -69,25 +69,25 @@ public class CNX {
     
     public static DefaultTableModel FillTable(String req){
         ResultSet rs= Select_request(req);
-         try {
-             DefaultTableModel m =new DefaultTableModel();
-             int nbcol=rs.getMetaData().getColumnCount();
-             String[] nomcol= new String[nbcol];
-             for(int i=0;i<nbcol;i++){
-                 nomcol[i]=rs.getMetaData().getColumnName(i+1);
-             }
-             m.setColumnIdentifiers(nomcol);
-             while(rs.next()){
-                 String [] donner =new String[nbcol];
-                 for(int i=0;i<nbcol;i++){
-                     donner[i]=rs.getString(i+1);
-                 }
-                 m.addRow(donner);
-             }
-             return m;
-         } catch (SQLException ex) {
-             Logger.getLogger(CNX.class.getName()).log(Level.SEVERE, null, ex);
-             return null;
-         }
+        try {
+            DefaultTableModel m =new DefaultTableModel();
+            int nbcol=rs.getMetaData().getColumnCount();
+            String[] nomcol= new String[nbcol];
+            for(int i=0;i<nbcol;i++){
+                nomcol[i]=rs.getMetaData().getColumnName(i+1);
+            }
+            m.setColumnIdentifiers(nomcol);
+            while(rs.next()){
+                String [] donner =new String[nbcol];
+                for(int i=0;i<nbcol;i++){
+                    donner[i]=rs.getString(i+1);
+                }
+                m.addRow(donner);
+            }
+            return m;
+        } catch (SQLException ex) {
+            Logger.getLogger(CNX.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 }
