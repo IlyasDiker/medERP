@@ -5,17 +5,27 @@
  */
 package mederp;
 
+import java.sql.ResultSet;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author ilyas
  */
 public class appoinement extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form appoinement
-     */
+    TableModel tb;
+    String TABLE_NAME = "appointments";
+    ResultSet RSG;
+
+    
     public appoinement() {
         initComponents();
+    }
+    
+    public void filltable(){
+        tb = CNX.FillTable("SELECT * FROM "+TABLE_NAME);
+        aplist.setModel(tb);
     }
 
     /**
@@ -40,7 +50,7 @@ public class appoinement extends javax.swing.JInternalFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        aplist = new javax.swing.JTable();
         refreshbtn = new javax.swing.JButton();
         delbtn = new javax.swing.JButton();
         addbtn = new javax.swing.JButton();
@@ -49,6 +59,23 @@ public class appoinement extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setTitle("Appointements");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 153));
 
@@ -143,7 +170,7 @@ public class appoinement extends javax.swing.JInternalFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        aplist.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -151,7 +178,7 @@ public class appoinement extends javax.swing.JInternalFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(aplist);
 
         refreshbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-refresh.png"))); // NOI18N
 
@@ -213,9 +240,14 @@ public class appoinement extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextField2ActionPerformed
 
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+        filltable();
+    }//GEN-LAST:event_formInternalFrameOpened
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addbtn;
+    private javax.swing.JTable aplist;
     private javax.swing.JButton delbtn;
     private javax.swing.JButton editbtn;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -229,7 +261,6 @@ public class appoinement extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton refreshbtn;
     private javax.swing.JLabel title;

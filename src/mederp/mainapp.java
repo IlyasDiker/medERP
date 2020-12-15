@@ -320,7 +320,7 @@ public class mainapp extends javax.swing.JFrame {
     }//GEN-LAST:event_assuranceActionPerformed
 
     private void medicinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medicinesActionPerformed
-        JInternalFrame medframe = new medicine();
+        JInternalFrame medframe = new Medicine();
         jDesktopPane1.add(medframe);
         medframe.setVisible(true);
     }//GEN-LAST:event_medicinesActionPerformed
