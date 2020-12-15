@@ -80,7 +80,7 @@ public class mainapp extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         gestionCabinet = new javax.swing.JMenu();
         assurance = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        medicines = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         Administration = new javax.swing.JMenu();
         newemployee = new javax.swing.JMenuItem();
@@ -178,9 +178,14 @@ public class mainapp extends javax.swing.JFrame {
         });
         gestionCabinet.add(assurance);
 
-        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-pills_s.png"))); // NOI18N
-        jMenuItem8.setText("Medicines");
-        gestionCabinet.add(jMenuItem8);
+        medicines.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-pills_s.png"))); // NOI18N
+        medicines.setText("Medicines");
+        medicines.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                medicinesActionPerformed(evt);
+            }
+        });
+        gestionCabinet.add(medicines);
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-treatment.png"))); // NOI18N
         jMenuItem1.setText("Medical Reports");
@@ -309,6 +314,12 @@ public class mainapp extends javax.swing.JFrame {
         assuranceframe.setVisible(true);
     }//GEN-LAST:event_assuranceActionPerformed
 
+    private void medicinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medicinesActionPerformed
+        JInternalFrame medframe = new medicine();
+        jDesktopPane1.add(medframe);
+        medframe.setVisible(true);
+    }//GEN-LAST:event_medicinesActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -362,10 +373,10 @@ public class mainapp extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JMenuItem manageclients;
     private javax.swing.JMenuItem manageemployee;
+    private javax.swing.JMenuItem medicines;
     private javax.swing.JMenuItem newemployee;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,20 +13,20 @@ import javax.swing.table.TableModel;
  *
  * @author ilyas
  */
-public class insurance extends javax.swing.JInternalFrame {
+public class medicine extends javax.swing.JInternalFrame {
 
     TableModel tb;
-    String TABLE_NAME = "assurances";
+    String TABLE_NAME = "medicines";
     /**
      * Creates new form insurance
      */
-    public insurance() {
+    public medicine() {
         initComponents();
     }
 
     public void filltable(){
         tb = CNX.FillTable("SELECT * FROM "+TABLE_NAME);
-        assuranceTable.setModel(tb);
+        medicineTable.setModel(tb);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,9 +40,9 @@ public class insurance extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        assuranceTable = new javax.swing.JTable();
+        medicineTable = new javax.swing.JTable();
         addbtn = new javax.swing.JButton();
-        newfieldins = new javax.swing.JTextField();
+        newfieldmed = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         delbtn = new javax.swing.JButton();
@@ -50,7 +50,7 @@ public class insurance extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("Insurance Manage");
+        setTitle("Medicine Manage");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
                 formInternalFrameOpened(evt);
@@ -73,7 +73,7 @@ public class insurance extends javax.swing.JInternalFrame {
 
         title.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         title.setForeground(new java.awt.Color(255, 255, 255));
-        title.setText("Insurances");
+        title.setText("Medicines");
         title.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -93,7 +93,7 @@ public class insurance extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20))
         );
 
-        assuranceTable.setModel(new javax.swing.table.DefaultTableModel(
+        medicineTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -101,7 +101,7 @@ public class insurance extends javax.swing.JInternalFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(assuranceTable);
+        jScrollPane1.setViewportView(medicineTable);
 
         addbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-add.png"))); // NOI18N
         addbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -110,9 +110,9 @@ public class insurance extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setText("New Insurance");
+        jLabel1.setText("New Medicine");
 
-        jLabel2.setText("Insurances List");
+        jLabel2.setText("Medicines List");
 
         delbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-delete_bin.png"))); // NOI18N
         delbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -138,7 +138,7 @@ public class insurance extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(newfieldins, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(newfieldmed, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(addbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -159,7 +159,7 @@ public class insurance extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(addbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(newfieldins, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                    .addComponent(newfieldmed, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -180,32 +180,32 @@ public class insurance extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void addbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbtnActionPerformed
-        String insurancename = newfieldins.getText();
-        String Query = "INSERT INTO assurances (nom) VALUES ('"+insurancename+"')";
+        String medname = newfieldmed.getText();
+        String Query = "INSERT INTO "+TABLE_NAME+" (nom) VALUES ('"+medname+"')";
         boolean isDone = CNX.AMS_request(Query);
         if (isDone){
-            JOptionPane.showMessageDialog(null, "Insurance added Successfully");
+            JOptionPane.showMessageDialog(null, "Medicine added Successfully");
             filltable();
-            newfieldins.setText("");
+            newfieldmed.setText("");
         } else {
             JOptionPane.showMessageDialog(null, "Can't Reach database");
         }        
     }//GEN-LAST:event_addbtnActionPerformed
 
     private void delbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delbtnActionPerformed
-        int row = assuranceTable.getSelectedRow();
-        int id = Integer.parseInt((String) assuranceTable.getValueAt(row, 0));
-        String fullName = ((String) assuranceTable.getValueAt(row, 1));
+        int row = medicineTable.getSelectedRow();
+        int id = Integer.parseInt((String) medicineTable.getValueAt(row, 0));
+        String fullName = ((String) medicineTable.getValueAt(row, 1));
         // System.out.println(id);
         int selectedOption = JOptionPane.showConfirmDialog(null, 
                 "Are you shure you want to delete :"+fullName+" ?", 
-                "Delete Insurance", JOptionPane.YES_NO_OPTION);
+                "Delete Medicine", JOptionPane.YES_NO_OPTION);
         if (selectedOption == JOptionPane.YES_OPTION){
             boolean isDone = CNX.AMS_request("DELETE FROM "+TABLE_NAME+" WHERE id = "+id);
             if (isDone){
-                JOptionPane.showMessageDialog(null, "Insurance Deleted Successfully");
+                JOptionPane.showMessageDialog(null, "Medicine Deleted Successfully");
             } else {
-                JOptionPane.showMessageDialog(null, "you can't delete this insurance");
+                JOptionPane.showMessageDialog(null, "you can't delete this Medicine");
             }
             filltable();
         }
@@ -218,13 +218,13 @@ public class insurance extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addbtn;
-    private javax.swing.JTable assuranceTable;
     private javax.swing.JButton delbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField newfieldins;
+    private javax.swing.JTable medicineTable;
+    private javax.swing.JTextField newfieldmed;
     private javax.swing.JButton refreshbtn;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
