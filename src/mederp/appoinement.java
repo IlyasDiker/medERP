@@ -5,10 +5,13 @@
  */
 package mederp;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 
 /**
@@ -33,6 +36,7 @@ public class appoinement extends javax.swing.JInternalFrame {
         ClientRS = CNX.Select_request("Select * from clients");
   
         try {
+            clientcombo.removeAllItems();
             while(ClientRS.next()){
                 String id = ClientRS.getString("CIN");
                 clientcombo.addItem(id);
@@ -41,6 +45,15 @@ public class appoinement extends javax.swing.JInternalFrame {
             Logger.getLogger(appoinement.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+    }
+    
+    public String getCIN(String id) throws SQLException{
+        ResultSet rs2 = CNX.Select_request("Select cin from clients where id = "+id);
+        while(rs2.next()){
+            String CIN = rs2.getString("cin");
+            return CIN;
+        }
+        return null;
     }
 
     
@@ -58,6 +71,8 @@ public class appoinement extends javax.swing.JInternalFrame {
         desc = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         datespinner = new javax.swing.JSpinner();
+        jLabel3 = new javax.swing.JLabel();
+        reffield = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         aplist = new javax.swing.JTable();
         refreshbtn = new javax.swing.JButton();
@@ -125,6 +140,12 @@ public class appoinement extends javax.swing.JInternalFrame {
 
         datespinner.setModel(new javax.swing.SpinnerDateModel());
 
+        jLabel3.setText("Ref");
+        jLabel3.setEnabled(false);
+
+        reffield.setEditable(false);
+        reffield.setEnabled(false);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -134,9 +155,11 @@ public class appoinement extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(reffield)
                     .addComponent(clientcombo, 0, 195, Short.MAX_VALUE)
                     .addComponent(jScrollPane2)
                     .addComponent(datespinner))
@@ -144,8 +167,12 @@ public class appoinement extends javax.swing.JInternalFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(reffield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(clientcombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -156,8 +183,8 @@ public class appoinement extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
         );
 
         aplist.setModel(new javax.swing.table.DefaultTableModel(
@@ -176,6 +203,11 @@ public class appoinement extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(aplist);
 
         refreshbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-refresh.png"))); // NOI18N
+        refreshbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshbtnActionPerformed(evt);
+            }
+        });
 
         clear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-delete.png"))); // NOI18N
         clear.addActionListener(new java.awt.event.ActionListener() {
@@ -192,6 +224,11 @@ public class appoinement extends javax.swing.JInternalFrame {
         });
 
         editbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-edit.png"))); // NOI18N
+        editbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editbtnActionPerformed(evt);
+            }
+        });
 
         delbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-delete_bin.png"))); // NOI18N
 
@@ -233,7 +270,7 @@ public class appoinement extends javax.swing.JInternalFrame {
                             .addComponent(clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(refreshbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(delbtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -248,10 +285,14 @@ public class appoinement extends javax.swing.JInternalFrame {
 
     private void aplistMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aplistMouseClicked
         int row = aplist.getSelectedRow();
-        ResultSet rs = CNX.Select_request("SELECT * FROM "+TABLE_NAME+" WHERE id = "+aplist.getValueAt(row, 0));
+        String id = (String) aplist.getValueAt(row, 0);
+        ResultSet rs = CNX.Select_request("SELECT * FROM "+TABLE_NAME+" WHERE id = "+id);
         try {
             while(rs.next()){
-                
+                reffield.setText(id);
+                clientcombo.setSelectedItem(getCIN(rs.getString("client")));
+                datespinner.setValue(rs.getTimestamp("datetimestamp"));
+                desc.setText(rs.getString("description"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(appoinement.class.getName()).log(Level.SEVERE, null, ex);
@@ -259,14 +300,69 @@ public class appoinement extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_aplistMouseClicked
 
     private void addbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbtnActionPerformed
+        String ClientCIN = (String) clientcombo.getSelectedItem();
+        SimpleDateFormat formater = new SimpleDateFormat("YYYY-MM-dd HH:mm");
+        String apdate = formater.format(datespinner.getValue());
+        String description = desc.getText();
+        ResultSet rs = CNX.Select_request("SELECT id from clients where CIN = '"+ClientCIN+"'");
+        String id;
+        try {
+            while(rs.next()){
+                id = rs.getString("id");
+                String Query = "INSERT INTO appointments(client, datetimestamp, description) "
+                        + "VALUES ("+id+", '"+apdate+"', '"+description+"')";
+                System.out.println(Query);
+                boolean isDone = CNX.AMS_request(Query);
+                if (isDone){
+                    JOptionPane.showMessageDialog(null, "Appointment Created Successfully");
+                    filltable();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Can't Reach Database");
+                }
+            }
+                
+        } catch (SQLException ex) {
+            Logger.getLogger(appoinement.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_addbtnActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
-        datespinner.setValue("");
         desc.setText("");
         clientcombo.setSelectedItem("");
+        reffield.setText("");
     }//GEN-LAST:event_clearActionPerformed
+
+    private void refreshbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshbtnActionPerformed
+        filltable();
+    }//GEN-LAST:event_refreshbtnActionPerformed
+
+    private void editbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbtnActionPerformed
+        String ClientCIN = (String) clientcombo.getSelectedItem();
+        SimpleDateFormat formater = new SimpleDateFormat("YYYY-MM-dd HH:mm");
+        String apdate = formater.format(datespinner.getValue());
+        String description = desc.getText();
+        ResultSet rs = CNX.Select_request("SELECT id from clients where CIN = '"+ClientCIN+"'");
+        String id;
+        String ref = reffield.getText();
+        try {
+            while(rs.next()){
+                id = rs.getString("id");
+                
+                String Query = "UPDATE "+TABLE_NAME+" SET client = '"+id+"', datetimestamp = '"+apdate+"', description = '"+description+"'"
+                        + " WHERE id = "+ref;
+                boolean isDone = CNX.AMS_request(Query);
+                if (isDone){
+                    JOptionPane.showMessageDialog(null, "Appointment Updated Successfully");
+                    filltable();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Can't Update this Appointment");
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(appoinement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_editbtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -280,11 +376,13 @@ public class appoinement extends javax.swing.JInternalFrame {
     private javax.swing.JButton editbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField reffield;
     private javax.swing.JButton refreshbtn;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables

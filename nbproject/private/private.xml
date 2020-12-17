@@ -4,15 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/ilyas/NetBeansProjects/medERP/src/mederp/mainapp.java</file>
+            <file>file:/Users/ilyas/NetBeansProjects/medERP/src/mederp/appoinement.java</file>
             <file>file:/Users/ilyas/NetBeansProjects/medERP/src/mederp/clients.java</file>
             <file>file:/Users/ilyas/NetBeansProjects/medERP/src/mederp/employees.java</file>
-            <file>file:/Users/ilyas/NetBeansProjects/medERP/src/mederp/CNX.java</file>
             <file>file:/Users/ilyas/NetBeansProjects/medERP/src/mederp/login.java</file>
-            <file>file:/Users/ilyas/NetBeansProjects/medERP/src/mederp/MedERP.java</file>
-            <file>file:/Users/ilyas/NetBeansProjects/medERP/src/mederp/userform.java</file>
-            <file>file:/Users/ilyas/NetBeansProjects/medERP/src/mederp/queue.java</file>
             <file>file:/Users/ilyas/NetBeansProjects/medERP/src/mederp/User.java</file>
-            <file>file:/Users/ilyas/NetBeansProjects/medERP/src/mederp/clientform.java</file>
         </group>
     </open-files>
 </project-private>

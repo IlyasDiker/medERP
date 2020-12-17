@@ -13,14 +13,14 @@ import javax.swing.table.TableModel;
  *
  * @author ilyas
  */
-public class insurance extends javax.swing.JInternalFrame {
+public class Insurance extends javax.swing.JInternalFrame {
 
     TableModel tb;
     String TABLE_NAME = "assurances";
     /**
      * Creates new form insurance
      */
-    public insurance() {
+    public Insurance() {
         initComponents();
     }
 

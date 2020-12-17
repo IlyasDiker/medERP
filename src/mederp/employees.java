@@ -226,7 +226,7 @@ public class employees extends javax.swing.JInternalFrame {
             if (isDone){
                 JOptionPane.showMessageDialog(null, "User Deleted Successfully");
             } else {
-                JOptionPane.showMessageDialog(null, "Uou can't delete this user");
+                JOptionPane.showMessageDialog(null, "You can't delete this user");
             }
             filltable();
         }

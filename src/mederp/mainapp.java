@@ -314,7 +314,7 @@ public class mainapp extends javax.swing.JFrame {
     }//GEN-LAST:event_manageclientsActionPerformed
 
     private void assuranceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assuranceActionPerformed
-        JInternalFrame assuranceframe = new insurance();
+        JInternalFrame assuranceframe = new Insurance();
         jDesktopPane1.add(assuranceframe);
         assuranceframe.setVisible(true);
     }//GEN-LAST:event_assuranceActionPerformed
