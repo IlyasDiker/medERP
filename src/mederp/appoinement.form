@@ -298,6 +298,9 @@
           <Image iconType="3" name="/mederp/images/icons8-delete_bin.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delbtnActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

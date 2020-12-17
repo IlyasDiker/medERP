@@ -231,6 +231,11 @@ public class appoinement extends javax.swing.JInternalFrame {
         });
 
         delbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-delete_bin.png"))); // NOI18N
+        delbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delbtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -363,6 +368,24 @@ public class appoinement extends javax.swing.JInternalFrame {
             Logger.getLogger(appoinement.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_editbtnActionPerformed
+
+    private void delbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delbtnActionPerformed
+        int row = aplist.getSelectedRow();
+        int id = Integer.parseInt((String) aplist.getValueAt(row, 0));
+        // System.out.println(id);
+        int selectedOption = JOptionPane.showConfirmDialog(null, 
+                "Are you shure you want to delete appointment number :"+id+" ?", 
+                "Delete Appointment", JOptionPane.YES_NO_OPTION);
+        if (selectedOption == JOptionPane.YES_OPTION){
+            boolean isDone = CNX.AMS_request("DELETE FROM "+TABLE_NAME+" WHERE id = "+id);
+            if (isDone){
+                JOptionPane.showMessageDialog(null, "Appointment Deleted Successfully");
+            } else {
+                JOptionPane.showMessageDialog(null, "You can't delete this Appointment");
+            }
+            filltable();
+        }
+    }//GEN-LAST:event_delbtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

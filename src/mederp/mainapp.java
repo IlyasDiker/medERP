@@ -75,7 +75,7 @@ public class mainapp extends javax.swing.JFrame {
         gestionClients = new javax.swing.JMenu();
         addclient = new javax.swing.JMenuItem();
         manageclients = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        lobby = new javax.swing.JMenuItem();
         appoinements = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         gestionCabinet = new javax.swing.JMenu();
@@ -151,9 +151,14 @@ public class mainapp extends javax.swing.JFrame {
         });
         gestionClients.add(manageclients);
 
-        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-waiting_room_s.png"))); // NOI18N
-        jMenuItem5.setText("Waiting Room");
-        gestionClients.add(jMenuItem5);
+        lobby.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-waiting_room_s.png"))); // NOI18N
+        lobby.setText("Waiting Room");
+        lobby.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lobbyActionPerformed(evt);
+            }
+        });
+        gestionClients.add(lobby);
 
         appoinements.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-calendar.png"))); // NOI18N
         appoinements.setText("Appointments");
@@ -331,6 +336,12 @@ public class mainapp extends javax.swing.JFrame {
         apframe.setVisible(true);
     }//GEN-LAST:event_appoinementsActionPerformed
 
+    private void lobbyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lobbyActionPerformed
+        JInternalFrame lobbyframe = new queue();
+        jDesktopPane1.add(lobbyframe);
+        lobbyframe.setVisible(true);
+    }//GEN-LAST:event_lobbyActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -383,8 +394,8 @@ public class mainapp extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JMenuItem lobby;
     private javax.swing.JMenuItem manageclients;
     private javax.swing.JMenuItem manageemployee;
     private javax.swing.JMenuItem medicines;
