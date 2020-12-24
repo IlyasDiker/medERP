@@ -42,3 +42,7 @@ usign a `maria-db` database i created thoes tables
 #### Main app
 <img src="https://media.discordapp.net/attachments/627082450723405855/785828275225755688/unknown.png?width=742&height=440">
 
+<img src="https://media.discordapp.net/attachments/627082450723405855/791641003638390794/unknown.png?width=834&height=477">
+
+<img src="https://media.discordapp.net/attachments/627082450723405855/791642677241839646/unknown.png?width=831&height=477">
+
