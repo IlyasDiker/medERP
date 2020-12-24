@@ -24,10 +24,25 @@ public class queue extends javax.swing.JInternalFrame {
         initComponents();
     }
     
-    public void filldata(){
-        RSG = CNX.Select_request("SELECT * FROM "+TABLE_NAME+" order by datetimestamp ASC");
-        ClientRS = CNX.Select_request("Select * from clients");
-  
+    public void filldata() throws SQLException{
+        RSG = CNX.Select_request("SELECT * FROM "+TABLE_NAME+" where datetimestamp > CURRENT_TIMESTAMP order by datetimestamp ASC");
+        
+        if (RSG.next()) {
+            ResultSet user1 = CNX.Select_request("Select * from clients where id="+RSG.getInt("client"));
+            while(user1.next()){
+                idc1.setText(user1.getString("cin"));
+                fullnamec1.setText(user1.getString("nom")+" "+user1.getString("prenom"));
+                timec1.setText(RSG.getTimestamp("datetimestamp").toString());
+            }
+        }
+        if (RSG.next()) {
+            ResultSet user2 = CNX.Select_request("Select * from clients where id="+RSG.getInt("client"));
+            while(user2.next()){
+                idc2.setText(user2.getString("cin"));
+                fullnamec2.setText(user2.getString("nom")+" "+user2.getString("prenom"));
+                timec2.setText(RSG.getTimestamp("datetimestamp").toString());
+            }
+        }
         
     }
 
@@ -184,11 +199,19 @@ public class queue extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
-        filldata();
+        try {
+            filldata();
+        } catch (SQLException ex) {
+            Logger.getLogger(queue.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
-        filldata();
+        try {
+            filldata();
+        } catch (SQLException ex) {
+            Logger.getLogger(queue.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_refreshActionPerformed
 
 
