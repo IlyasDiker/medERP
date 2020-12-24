@@ -76,13 +76,16 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="manageclientsActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+            <MenuItem class="javax.swing.JMenuItem" name="lobby">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/mederp/images/icons8-waiting_room_s.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Waiting Room"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lobbyActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="appoinements">
               <Properties>
@@ -102,6 +105,7 @@
                   <Image iconType="3" name="/mederp/images/icons8-paper_money.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Facturation"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -140,6 +144,7 @@
                   <Image iconType="3" name="/mederp/images/icons8-treatment.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Medical Reports"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </MenuItem>
           </SubComponents>
