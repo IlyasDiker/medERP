@@ -172,6 +172,7 @@ public class mainapp extends javax.swing.JFrame {
 
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-paper_money.png"))); // NOI18N
         jMenuItem4.setText("Facturation");
+        jMenuItem4.setEnabled(false);
         gestionClients.add(jMenuItem4);
 
         jMenuBar1.add(gestionClients);
@@ -199,6 +200,7 @@ public class mainapp extends javax.swing.JFrame {
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-treatment.png"))); // NOI18N
         jMenuItem1.setText("Medical Reports");
+        jMenuItem1.setEnabled(false);
         gestionCabinet.add(jMenuItem1);
 
         jMenuBar1.add(gestionCabinet);

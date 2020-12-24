@@ -31,7 +31,7 @@ public class appoinement extends javax.swing.JInternalFrame {
     }
     
     public void filltable(){
-        tb = CNX.FillTable("SELECT * FROM "+TABLE_NAME);
+        tb = CNX.FillTable("SELECT * FROM "+TABLE_NAME+" order by datetimestamp ASC");
         aplist.setModel(tb);
         ClientRS = CNX.Select_request("Select * from clients");
   
