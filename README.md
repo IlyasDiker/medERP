@@ -34,6 +34,13 @@ usign a `maria-db` database i created thoes tables
 | INT `AUTOINCREMENT` | Varchar`100`  |
 | identifier          | Medicine Name |
 
+#### Apointments
+
+| id                     | client    | datetimestamp                  | description   |
+|------------------------|-----------|--------------------------------|---------------|
+| INT `AUTOINCREMENT`    | INT       | TIMESTAMP                      | VARCHAR       |
+| appointment identifier | client id | date & time of the appointment | a description |
+
 ### User Interfaces
 
 #### Login
