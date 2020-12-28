@@ -53,3 +53,5 @@ usign a `maria-db` database i created thoes tables
 
 <img src="https://media.discordapp.net/attachments/627082450723405855/791642677241839646/unknown.png?width=831&height=477">
 
+
+<p align="center">Made with 💙 for 3 billions devices</p>
