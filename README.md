@@ -15,7 +15,7 @@ usign a `maria-db` database i created thoes tables
 
 #### Clients
 
-| id                  | nom              | prenom            | cin          | sex                       | email         | phone        |
+| id                  | nom              | prenom            | cin          | sexe                      | email         | phone        |
 | ------------------- | ---------------- | ----------------- | ------------ | ------------------------- | ------------- | ------------ |
 | INT `AUTOINCREMENT` | Varchar`100`     | Varchar`100`      | Varchar`100` | Varchar`100`              | Varchar`100`  | Varchar`100` |
 | User Identifier     | Client Last Name | Client First Name | Client CIN   | Male/Female/Not Specified | Email address | Phone number |
