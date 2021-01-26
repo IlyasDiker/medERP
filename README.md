@@ -44,14 +44,15 @@ usign a `maria-db` database i created thoes tables
 ### User Interfaces
 
 #### Login
-<img src="https://media.discordapp.net/attachments/627082450723405855/785562029532512336/unknown.png">
+<img src="https://cdn.discordapp.com/attachments/752833198211334206/803610918088343563/Screenshot_2021-01-26_at_14.06.02.png">
 
 #### Main app
-<img src="https://media.discordapp.net/attachments/627082450723405855/785828275225755688/unknown.png?width=742&height=440">
+<img src="https://cdn.discordapp.com/attachments/752833198211334206/803610418853445652/Screenshot_2021-01-26_at_13.50.38.png">
 
-<img src="https://media.discordapp.net/attachments/627082450723405855/791641003638390794/unknown.png?width=834&height=477">
+<img src="https://cdn.discordapp.com/attachments/752833198211334206/803610419326746634/Screenshot_2021-01-26_at_13.53.11.png">
 
-<img src="https://media.discordapp.net/attachments/627082450723405855/791642677241839646/unknown.png?width=831&height=477">
+<img src="https://cdn.discordapp.com/attachments/752833198211334206/803610422171009024/Screenshot_2021-01-26_at_13.54.40.png">
 
+<img src="https://cdn.discordapp.com/attachments/752833198211334206/803610423655661658/Screenshot_2021-01-26_at_14.00.26.png">
 
 <p align="center">Made with 💙 for 3 billions devices</p>
