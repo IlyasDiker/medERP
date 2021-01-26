@@ -23,7 +23,7 @@ public class CNX {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:8889/mederp", "root", "root");
-            System.out.println("ERROR : Connected to DB 'medERP' successfully");
+            System.out.println("INFO : Connected to DB 'medERP' successfully");
             return con;
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(CNX.class.getName()).log(Level.SEVERE, null, ex);

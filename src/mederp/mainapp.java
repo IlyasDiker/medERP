@@ -5,10 +5,13 @@
  */
 package mederp;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
@@ -64,7 +67,16 @@ public class mainapp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        ImageIcon icon =  new ImageIcon(getClass().getResource("appbg.jpg"));
+        Image img = icon.getImage();
+
+        //Image newimg = img.getScaledInstance(jDesktopPane1.getWidth(), jDesktopPane1.getHeight(), Image.SCALE_SMOOTH);
+        jDesktopPane1 = new javax.swing.JDesktopPane(){
+            public void paintComponent (Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         jSeparator1 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
@@ -88,6 +100,7 @@ public class mainapp extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("medERP");
+        setMinimumSize(new java.awt.Dimension(577, 454));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -109,6 +122,7 @@ public class mainapp extends javax.swing.JFrame {
 
         Settings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mederp/images/icons8-settings.png"))); // NOI18N
         Settings.setText("Settings");
+        Settings.setEnabled(false);
         Settings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SettingsActionPerformed(evt);
@@ -240,7 +254,7 @@ public class mainapp extends javax.swing.JFrame {
             .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
-        setSize(new java.awt.Dimension(660, 509));
+        setSize(new java.awt.Dimension(702, 509));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -288,6 +302,7 @@ public class mainapp extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(mainapp.class.getName()).log(Level.SEVERE, null, ex);
         }
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }//GEN-LAST:event_formWindowOpened
 
     private void accountsettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountsettingsActionPerformed
