@@ -45,7 +45,7 @@ public class clientform extends javax.swing.JInternalFrame {
             usercinfield.setText(RSG.getString("cin"));
             nomfield.setText(RSG.getString("nom"));
             prenomfield.setText(RSG.getString("prenom"));
-            sexcombo.setSelectedItem(RSG.getString("sex"));
+            sexcombo.setSelectedItem(RSG.getString("sexe"));
             emailfield.setText(RSG.getString("email"));
             phonefield.setText(RSG.getString("phone"));
         }
@@ -221,7 +221,7 @@ public class clientform extends javax.swing.JInternalFrame {
             errorfield.setText("Please fill all the Fields");
         } else {        
             if (isNewUser){
-                String Query = "INSERT INTO "+TABLE_NAME+"(nom, prenom, cin, phone, email, sex) "
+                String Query = "INSERT INTO "+TABLE_NAME+"(nom, prenom, cin, phone, email, sexe) "
                         + "VALUES ('"+Nom+"', '"+Prenom+"', '"+CIN+"', '"+Phone+"', '"+Email+"', '"+Sex+"')";
                 boolean isDone = CNX.AMS_request(Query);
                 if (isDone){
@@ -232,7 +232,7 @@ public class clientform extends javax.swing.JInternalFrame {
 
                 }
             } else {
-                String Query = "UPDATE "+TABLE_NAME+" SET nom = '"+Nom+"', prenom = '"+Prenom+"', cin = '"+CIN+"', phone = '"+Phone+"', sex = '"+Sex+"', email ='"+Email+"'"
+                String Query = "UPDATE "+TABLE_NAME+" SET nom = '"+Nom+"', prenom = '"+Prenom+"', cin = '"+CIN+"', phone = '"+Phone+"', sexe = '"+Sex+"', email ='"+Email+"'"
                         + " WHERE id = "+userTarget;
                 boolean isDone = CNX.AMS_request(Query);
                 if (isDone){
